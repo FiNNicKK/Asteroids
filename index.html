@@ -1,0 +1,78 @@
+<!doctype html>
+<html> 
+<head>
+    <title>Астероиды</title>
+    <meta charset='utf-8'>
+	<link rel="stylesheet" href="style.css">
+	
+</head>
+
+<body>
+<div id="element"></div>
+<div id="wrapper">
+
+	<canvas id='game' >Элемент не поддерживается</canvas>
+</div>
+	<script type="text/javascript" src="game.js"></script>
+</body>
+</html>
+
+function fireDestroy(fire_collection, aster_collection) {
+for (j in fire_collection) {
+temp = aster_collection[i].lifes;
+
+if (fire_collection[j].super == 0) {
+if (aster_collection[i].big == 1) {
+if (Math.abs(aster_collection[i].x - fire_collection[j].x) < 100 && Math.abs(aster_collection[i].y - fire_collection[j].y) < 100) {
+aster_collection[i].lifes -= fire_collection[j].damage;
+fire_collection[j].damage -= temp;
+if (aster_collection[i].lifes <= 0) {
+expl.push({
+x: aster_collection[i].x - 25,
+y: aster_collection[i].y - 25,
+animx: 0,
+animy: 0
+});
+count += 7;
+aster_collection[i].del = 1;
+}
+if (fire_collection[j].damage <= 0) {
+fire_collection.splice(j, 1);
+break;
+}
+}
+}
+else if (Math.abs(aster_collection[i].x + 25 - fire_collection[j].x - 15) < 50 && Math.abs(aster_collection[i].y - fire_collection[j].y) < 25) {
+aster_collection[i].lifes -= fire_collection[j].damage;
+fire_collection[j].damage -= temp;
+if (aster_collection[i].lifes <= 0) {
+expl.push({
+x: aster_collection[i].x - 25,
+y: aster_collection[i].y - 25,
+animx: 0,
+animy: 0
+});
+count++;
+aster_collection[i].del = 1;
+}
+if (fire_collection[j].damage <= 0) {
+fire_collection.splice(j, 1);
+break;
+}
+}
+}
+else if (Math.abs(aster_collection[i].x - fire_collection[j].x) < 50 && Math.abs(aster_collection[i].y - fire_collection[j].y) < 50) {
+aster_collection[i].lifes -= fire_collection[j].damage;
+fire_collection[j].damage -= temp;
+if (aster_collection[i].lifes <= 0) {
+expl.push({x: aster_collection[i].x - 25, y: aster_collection[i].y - 25, animx: 0, animy: 0});
+count++;
+aster_collection[i].del = 1;
+}
+if (fire_collection[j].damage <= 0) {
+fire_collection.splice(j, 1);
+break;
+}
+}
+}
+}
